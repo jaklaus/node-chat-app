@@ -1,26 +1,58 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Node Chat App</title>
 
-    <link rel="stylesheet" href="/css/libs/bootstrap.min.css">
+<head>
+  <meta charset="utf-8">
+  <title>Node Chat App</title>
 
-  </head>
-  <body>
-    <p>Welcome to the chat app.</p>
+  <link rel="stylesheet" href="/css/libs/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
 
-    <ol id="messages"></ol>
+</head>
 
-    <form id="message-form">
-        <input name="message" type="text" placeholder="Message"/>
-      <button class="btn btn-primary">Send</button>
-    </form>
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Chat App</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+        <h2 class="nav-link">People</h2>
+        <ul class="nav nav-pills flex-column" id="users">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Reports</a>
+          </li>
+        </ul>
+      </nav>
+      <main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
+        <div id="chat-window">
+          <h1>Chat</h1>
+          <ol id="messages"></ol>
+        </div>
+        <div class="fixed-bottom col-sm-9 ml-sm-auto col-md-10 pt-3" id="chat-message">
+          <form id="message-form">
+            <div class="input-group">
+              <input class="form-control" name="message" type="text" placeholder="Message" autofocus autocomplete="off">
+              <div class="input-group-btn" id="chat-buttons">
+                <button class="btn btn-primary">Send</button>
+                <button class="btn btn-warning" id="send-location">Send Location</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+  </div>
 
-    <button class="btn btn-primary" id="send-location">Send Location</button>
+  <!-- JS Scripts  -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/libs/jquery-3.2.1.min.js"></script>
+  <script src="/js/libs/popper.min.js"></script>
+  <script src="/js/libs/bootstrap.min.js"></script>
+  <script src="/js/index.js"></script>
+</body>
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/libs/jquery-3.2.1.min.js"></script>
-    <script src="/js/index.js"></script>
-  </body>
 </html>
