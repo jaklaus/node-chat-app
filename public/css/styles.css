@@ -1,10 +1,6 @@
-body {
-  padding-top: 3.5rem;
-}
-
 .sidebar {
   position: fixed;
-  top: 51px;
+  top: 0;
   bottom: 0;
   left: 0;
   z-index: 1000;
@@ -26,14 +22,20 @@ body {
   background-color: #222;
 }
 
+#chat-window{
+  margin: 15px 0 0 15px;
+}
+
 .btn-blue{
   background-color: #5057ba;
   color: #fff;
+  border-radius: 0;
 }
 
 .btn-green{
   background-color: #2de59f;
   color: #fff;
+  border-radius: 0;
 }
 
 #chat-message {
@@ -42,6 +44,7 @@ body {
 
 #messages {
   list-style: none;
+  padding: 0 0 0 4px;
 }
 
 #chat-buttons > button{
@@ -50,4 +53,14 @@ body {
 
 #message-form input{
   margin-right: 3px;
+  border-radius: 0;
+}
+
+h1{
+  font-weight: bold;
+  font-size: 3rem
+}
+
+.sidebar-header{
+  color: #5057ba;
 }
