@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top" id="nav-top">
     <a class="navbar-brand" href="#">Chat App</a>
     <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -21,11 +21,12 @@
   </nav>
   <div class="container-fluid">
     <div class="row">
-      <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+      <nav class="col-sm-3 col-md-2 d-none d-sm-block sidebar" >
         <h2 class="nav-link">People</h2>
         <ul class="nav nav-pills flex-column" id="users">
           <li class="nav-item">
-            <a class="nav-link" href="#">Reports</a>
+            <p class="nav-link">User 1</p>
+            <p class="nav-link">User 2</p>
           </li>
         </ul>
       </nav>
@@ -39,8 +40,8 @@
             <div class="input-group">
               <input class="form-control" name="message" type="text" placeholder="Message" autofocus autocomplete="off">
               <div class="input-group-btn" id="chat-buttons">
-                <button class="btn btn-primary">Send</button>
-                <button class="btn btn-warning" id="send-location">Send Location</button>
+                <button class="btn btn-blue">Send</button>
+                <button class="btn btn-green" id="send-location">Send Location</button>
               </div>
             </div>
           </form>
@@ -52,6 +53,7 @@
   <!-- JS Scripts  -->
   <script src="/socket.io/socket.io.js"></script>
   <script src="/js/libs/jquery-3.2.1.min.js"></script>
+  <script src="/js/libs/moment.js"></script>
   <script src="/js/libs/popper.min.js"></script>
   <script src="/js/libs/bootstrap.min.js"></script>
   <script src="/js/index.js"></script>
