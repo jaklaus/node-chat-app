@@ -14,6 +14,26 @@ body {
   border-right: 1px solid #eee;
   padding-left: 0;
   padding-right: 0;
+
+  background: #2de59f; /* Old browsers */
+  background: -moz-linear-gradient(top, #2de59f 0%, #5057ba 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #2de59f 0%,#5057ba 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #2de59f 0%,#5057ba 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2de59f', endColorstr='#5057ba',GradientType=0 ); /* IE6-9 */
+}
+
+#nav-top{
+  background-color: #222;
+}
+
+.btn-blue{
+  background-color: #5057ba;
+  color: #fff;
+}
+
+.btn-green{
+  background-color: #2de59f;
+  color: #fff;
 }
 
 #chat-message {
