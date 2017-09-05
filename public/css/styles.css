@@ -1,3 +1,8 @@
+html, body{
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -23,7 +28,12 @@
 }
 
 #chat-window{
-  margin: 15px 0 0 15px;
+  margin: 28px 0 0 15px;
+}
+
+#chat-window h1{
+  margin-bottom: 1em;
+  color: #222;
 }
 
 .btn-blue{
@@ -54,6 +64,9 @@
 #message-form input{
   margin-right: 3px;
   border-radius: 0;
+  border-image-source: linear-gradient(to right, #2de59f, #5057ba);
+  border-width: 1pt;
+  border-image-slice: 1;
 }
 
 h1{
@@ -62,5 +75,26 @@ h1{
 }
 
 .sidebar-header{
-  color: #5057ba;
+}
+
+.message__title{
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.message__title h5 {
+  margin: 0;
+}
+
+.message__title span {
+  color: #999;
+  margin-left: 10px;
+  font-size: 0.8em;
+}
+
+.message{
+  border-left: 3px solid #5057ba;
+  padding-left: 5px;
+
 }
