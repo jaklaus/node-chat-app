@@ -3,77 +3,32 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Node Chat App</title>
-
-  <link rel="stylesheet" href="/css/libs/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <link rel="stylesheet" href="/css/styles.css">
-
+  <link rel="stylesheet" href="/css/libs/bootstrap.min.css">
+  <title>Join | Chat App</title>
 </head>
 
-<body>
-  <div class="container-fluid">
-    <div class="row">
-      <nav class="col-sm-3 col-md-2 d-none d-sm-block sidebar" >
-        <h1 class="nav-link sidebar-header">People</h1>
-        <ul class="nav nav-pills flex-column" id="users">
-          <li class="nav-item">
-            <p class="nav-link">User 1</p>
-            <p class="nav-link">User 2</p>
-          </li>
-        </ul>
-      </nav>
-      <main class="col-sm-9 ml-sm-auto col-md-10" role="main">
-        <div id="chat-window">
-          <h1>Chat</h1>
-          <ol id="messages"></ol>
-        </div>
-        <div class="fixed-bottom col-sm-9 ml-sm-auto col-md-10 pt-3" id="chat-message">
-          <form id="message-form">
-            <div class="input-group">
-              <input class="form-control" name="message" type="text" placeholder="Message" autofocus autocomplete="off">
-              <div class="input-group-btn" id="chat-buttons">
-                <button class="btn btn-blue">Send</button>
-                <button class="btn btn-green" id="send-location">Send Location</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </main>
-    </div>
+<body class="join-container gradient-background">
+  <div class="join-form">
+    <form action="/chat.html">
+      <div class="form-group">
+        <h3>Join a Chat</h3>
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput">Display Name</label>
+        <input type="text" class="form-control" name="name">
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput2">Room Name</label>
+        <input type="text" class="form-control" name="room">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-blue btn-lg btn-block">Submit</button>
+      </div>
+    </form>
   </div>
 
-  <script id="message-template" type="text/template">
-    <li class="message">
-      <div class="message__title">
-        <h5>{{from}}</h5>
-        <span>{{createdAt}}</span>
-      </div>
-      <div class="message__body">
-        <p>{{text}}</p>
-      </div>
-    </li>
-  </script>
-
-  <script id="message-location-template" type="text/template">
-    <li class="message">
-      <div class="message__title">
-        <h5>{{from}}</h5>
-        <span>{{createdAt}}</span>
-      </div>
-      <div class="message__body">
-        <a href={{url}} target="blank">My Current Location</a>
-      </div>
-    </li>
-  </script>
-
-  <!-- JS Scripts  -->
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="/js/libs/jquery-3.2.1.min.js"></script>
-  <script src="/js/libs/moment.js"></script>
-  <script src="/js/libs/mustache.js"></script>
-  <script src="/js/libs/popper.min.js"></script>
-  <script src="/js/libs/bootstrap.min.js"></script>
   <script src="/js/index.js"></script>
 </body>
 
