@@ -14,8 +14,11 @@
   "author": "Joel Klaus",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.4",
+    "hbs": "^4.0.1",
     "moment": "^2.18.1",
+    "mustache": "^2.3.0",
     "socket.io": "^2.0.3"
   },
   "devDependencies": {
