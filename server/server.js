@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const socketIO = require('socket.io');
 const http = require('http');
+const mustacheExpress = require('mustache-express');
+
 const {
   isRealString
 } = require('./utils/validation');
@@ -21,6 +23,10 @@ var {
   generateMessage,
   generateLocationMessage
 } = require('./utils/message');
+
+app.engine('mustache', mustacheExpress());
+app.set('view engine', 'mustache');
+app.set('views', path.join(__dirname, '../views'));
 
 app.use(express.static(publicPath));
 
