@@ -1,0 +1,9 @@
+<li class="message">
+  <div class="message__title">
+    <h5>{{ from }}</h5>
+    <span>{{ createdAt }}</span>
+  </div>
+  <div class="message__body">
+    <a href={{ url }} target="blank">My Current Location</a>
+  </div>
+</li>

@@ -1,6 +1,6 @@
 var socket = io();
 
-function scrollToBottom(){
+function scrollToBottom() {
   // Selectors
   var chatWindow = jQuery('#chat-window');
   var newMessage = jQuery('#messages').children('li:last-child');
@@ -11,7 +11,7 @@ function scrollToBottom(){
   var newMessageHeight = newMessage.innerHeight();
   var lastMessageHeight = newMessage.prev().innerHeight();
 
-  if(clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeight){
+  if (clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeight) {
     chatWindow.scrollTop(scrollHeight);
   }
 }
@@ -20,8 +20,8 @@ socket.on('connect', function() {
   console.log('Connected to server.');
   var params = jQuery.deparam(window.location.search);
 
-  socket.emit('join', params, function(err){
-    if(err){
+  socket.emit('join', params, function(err) {
+    if (err) {
       alert(err);
       window.location.href = '/';
     } else {
@@ -34,10 +34,10 @@ socket.on('disconnect', function() {
   console.log('Disconnected from server');
 });
 
-socket.on('updateUserList', function(users){
+socket.on('updateUserList', function(users) {
   var li = jQuery('<li></li>');
 
-  users.forEach(function(user){
+  users.forEach(function(user) {
     li.append(jQuery('<p class="nav-link"></p>').text(user));
   });
 
@@ -46,26 +46,30 @@ socket.on('updateUserList', function(users){
 
 socket.on('newMessage', function(message) {
   var formattedTime = moment(message.createdAt).format('h:mm a')
-  var template = jQuery('#message-template').html();
-  var html = Mustache.render(template, {
-    text: message.text,
-    from: message.from,
-    createdAt: formattedTime
-  });
-  jQuery('#messages').append(html);
-  scrollToBottom();
+  $.get('templates/message-template.mst', function(template) {
+    var html = Mustache.render(template, {
+      text: message.text,
+      from: message.from,
+      createdAt: formattedTime
+    });
+    jQuery('#messages').append(html);
+    scrollToBottom();
+  })
+
 });
 
 socket.on('newLocationMessage', function(message) {
   var formattedTime = moment(message.createdAt).format('h:mm a');
-  var template = jQuery('#message-location-template').html();
-  var html = Mustache.render(template, {
-    url: message.url,
-    from: message.from,
-    createdAt: formattedTime
-  });
-  jQuery('#messages').append(html);
-  scrollToBottom();
+  $.get('templates/message-location-template.mst', function(template) {
+    var html = Mustache.render(template, {
+      url: message.url,
+      from: message.from,
+      createdAt: formattedTime
+    });
+    jQuery('#messages').append(html);
+    scrollToBottom();
+  })
+
 })
 
 jQuery('#message-form').on('submit', function(e) {
