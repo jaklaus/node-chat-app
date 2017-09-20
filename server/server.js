@@ -3,13 +3,16 @@ const path = require('path');
 const socketIO = require('socket.io');
 const http = require('http');
 const mustacheExpress = require('mustache-express');
+const _ = require('lodash');
+
+const {
+  Users
+} = require('./utils/users');
+var users = new Users();
 
 const {
   isRealString
 } = require('./utils/validation');
-const {
-  Users
-} = require('./utils/users');
 
 const publicPath = path.join(__dirname, '../public');
 const port = process.env.PORT || 3000;
@@ -17,7 +20,6 @@ const port = process.env.PORT || 3000;
 var app = express();
 var server = http.createServer(app);
 var io = socketIO(server);
-var users = new Users();
 
 var {
   generateMessage,
@@ -37,6 +39,17 @@ io.on('connection', (socket) => {
     if (!isRealString(params.name) || !isRealString(params.room)) {
       return callback('Name and room are required.')
     }
+
+    let existingUsers = users.getUserList(params.room);
+    let existingUserTest = existingUsers.filter((user) => {
+      return user.toLowerCase() === params.name.toLowerCase();
+    });
+
+    if(existingUserTest.length > 0){
+      return callback('Name already in use, please choose another.')
+    };
+
+    var standardizeRoom = _.startCase(_.toLower(params.room));
 
     socket.join(params.room);
     users.removeUser(socket.id);
