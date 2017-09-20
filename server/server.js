@@ -21,8 +21,6 @@ var app = express();
 var server = http.createServer(app);
 var io = socketIO(server);
 
-
-
 var {
   generateMessage,
   generateLocationMessage

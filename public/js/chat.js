@@ -20,6 +20,13 @@ socket.on('connect', function() {
   console.log('Connected to server.');
   var params = jQuery.deparam(window.location.search);
 
+  String.prototype.toProperCase = function () {
+    return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+  };
+
+  params.room = params.room.toProperCase();
+  console.log(params)
+
   socket.emit('join', params, function(err) {
     if (err) {
       alert(err);
